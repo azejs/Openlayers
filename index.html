@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using OpenLayers with Vite</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using OpenLayers with Vite</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+  <div id="map" class="map"></div>
+        <div class="wrapper">
+          
+          <div class="sidebar">
+              <div class="profile">
+                  <img src="./image/lg.jpg">
+                  <h3>Openlayers </h3>
+                  <p>v6</p>
+              </div>
+              <ul>
+                  <li>
+                        <a>
+                          <input type="radio" name="OSMStandard" value="OSMStandard" checked="checked">
+                          <!-- <span class="icon"><i class="fas fa-home"></i></span> -->
+                          <span class="item">OSM Standard</span>
+                        </a>
+                  </li>
+                  <li>
+                    <a>
+                        <input type="radio" name="OSMStandard" value="OSMHumanitaire"  >
+                        <!-- <span class="icon"><i class="fas fa-home"></i></span> -->
+                        <span class="item">OSM Humanitaire</span>
+                      </a>
+                  </li>
+                  <li>
+                    <a>
+                        <input type="radio" name="OSMStandard" value="stamenTerrain"  >
+                        <!-- <span class="icon"><i class="fas fa-home"></i></span> -->
+                        <span class="item">stamen Terrain</span>
+                      </a>
+                  </li>
+                  <li>
+                    <a>
+                        <input type="radio" name="OSMStandard" value="satellite"  >
+                   
+                        <span class="item">Satellite Terrain</span>
+                      </a>
+                  </li>
+                 
+                  <li>  
+                    <label  class="label"  for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  type &nbsp;</label>
+                    <select id="type">
+                      <option value="Polygon">Polygon</option>
+                      <option value="LineString">LineString</option>
+                      <option value="None">None</option>
+                    </select>
+                 
+                </li>
+              </ul>
+          </div>
+        
+</div>
+
+<script>
+  var hamburger = document.querySelector(".hamburger");
+hamburger.addEventListener("click", function(){
+document.querySelector("body").classList.toggle("active");
+})
+</script>
+    <script type="module" src="./main.js"></script>
+ 
+</body>
+</html>
