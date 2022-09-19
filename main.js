@@ -5,11 +5,20 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import XYZ from 'ol/source/XYZ';
 import {fromLonLat} from 'ol/proj';
-import Stamen from 'ol/source/Stamen';
+ 
 import LayerGroup from 'ol/layer/Group';
 import VectorImageLayer from 'ol/layer/VectorImage';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
+import Draw from 'ol/interaction/Draw';
+ 
+ 
+import Snap from 'ol/interaction/Snap';
+ 
+import VectorLayer from 'ol/layer/Vector';
+ 
+ 
+ 
       function init(){
         
         const OSMStandard = new TileLayer({
@@ -41,8 +50,9 @@ import GeoJSON from 'ol/format/GeoJSON';
           title: 'satellite', 
           visible: true,
         });
+      
         const baseLayergroupe = new LayerGroup({
-          layers:[OSMHumanitaire,stamenTerrain,satellite,OSMStandard]
+          layers:[OSMHumanitaire,stamenTerrain,satellite,OSMStandard] 
         })
   
       const map = new Map({
@@ -66,32 +76,40 @@ import GeoJSON from 'ol/format/GeoJSON';
     for(let changeCouche of changeCouches){
       changeCouche.addEventListener('change', function(){
         let changeCoucheValue = this.value;
-        baseLayergroupe.getLayers().forEach(function(element, index, array){
+        baseLayergroupe.getLayers().forEach(function(element){
            let baseCouhceLayers = element.get('title');
            element.setVisible(baseCouhceLayers===changeCoucheValue)
            console.log(element.get('title'),element.get('visible'))
         })
       })
     }
-          console.log(changeCouche);
-
-
-
-          // vector marocain 
-          const marocainVector = new VectorImageLayer({
-           source: new VectorSource({
-            url: '.data/nationale.geojson',
-            format: new GeoJSON(),
-           }),
-           visible: true,
-           title: 'Maroc',
-          })
-          map.addLayer(marocainVector);
-          1
+           // features in this layer will be snapped to
+           const baseVector = new VectorLayer({
+            source: new VectorSource({
+              format: new GeoJSON(),
+              url: '.data/maroc.json',
+            }),
+            style: {
+              'fill-color': 'rgba(255, 0, 0, 0.3)',
+              'stroke-color': 'rgba(255, 0, 0, 0.9)',
+              'stroke-width': 0.5,
+            },
+          });
+map.addLayer(baseVector)
+          // this is were the drawn features go
+          // const drawVector = new VectorLayer({
+          //   source: new VectorSource(),
+          //   style: {
+          //     'stroke-color': 'rgba(100, 255, 0, 1)',
+          //     'stroke-width': 2,
+          //     'fill-color': 'rgba(100, 255, 0, 0.3)',
+          //   },
+          // }); 
 
 
  
-     };
+ 
+     }
 
                     
                     
