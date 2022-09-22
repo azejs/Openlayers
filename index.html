@@ -60,7 +60,7 @@
                       </a>
                   </li>
                   <li>
-                    <a>
+                    <a >
                         <input type="radio" name="OSMStandard" value="satellite"  >
                    
                         <span class="item">Satellite Terrain</span>
@@ -68,13 +68,15 @@
                   </li>
                  
                   <li>  
-                    <label  class="label"  for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  type &nbsp;</label>
-                    <select id="type">
-                      <option value="Polygon">Polygon</option>
-                      <option value="LineString">LineString</option>
-                      <option value="None">None</option>
-                    </select>
-                 
+                    <form>
+                      <label for="type"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;type&nbsp;</label>
+                      <select id="type">
+                        <option value="Point">Point</option>
+                        <option value="LineString">LineString</option>
+                        <option value="Polygon">Polygon</option>
+                        <option value="Circle">Circle</option>
+                      </select>
+                    </form>
                 </li>
               </ul>
           </div>
