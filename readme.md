@@ -29,5 +29,5 @@ Chaque couche a une source, qui sait charger le contenu de la couche. Dans le ca
 - Features
 Les Features (entités) représentent des choses du monde réel et peuvent être rendues à l’aide de différentes géométries (comme le point, la ligne ou le polygone) à l’aide d’un style, qui détermine son apparence (épaisseur de ligne, couleur de remplissage, etc.).
 # Installation ce projet
--npm install
--npm start
+- npm install
+- npm start
