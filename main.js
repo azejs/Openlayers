@@ -50,7 +50,8 @@ import VectorLayer from 'ol/layer/Vector';
           title: 'satellite', 
           visible: true,
         });
-      
+      // this is were the drawn features go
+    
         const baseLayergroupe = new LayerGroup({
           layers:[OSMHumanitaire,stamenTerrain,satellite,OSMStandard] 
         })
@@ -87,29 +88,64 @@ import VectorLayer from 'ol/layer/Vector';
            const baseVector = new VectorLayer({
             source: new VectorSource({
               format: new GeoJSON(),
-              url: '.data/maroc.json',
+              url: './data/maroc.geojson',
             }),
             style: {
               'fill-color': 'rgba(255, 0, 0, 0.3)',
               'stroke-color': 'rgba(255, 0, 0, 0.9)',
-              'stroke-width': 0.5,
+              'stroke-width': 2,
             },
+            visible: true,
           });
-map.addLayer(baseVector)
-          // this is were the drawn features go
-          // const drawVector = new VectorLayer({
-          //   source: new VectorSource(),
-          //   style: {
-          //     'stroke-color': 'rgba(100, 255, 0, 1)',
-          //     'stroke-width': 2,
-          //     'fill-color': 'rgba(100, 255, 0, 0.3)',
-          //   },
-          // }); 
+            map.addLayer(baseVector)
+    
 
+            const drawVector = new VectorLayer({
+              source: new VectorSource(),
+              style: {
+                'stroke-color': 'rgba(100, 255, 0, 1)',
+                'stroke-width': 3,
+                'fill-color': 'rgba(100, 255, 0, 0.3)',
+              },
+            });
+ 
+            map.addLayer(drawVector)
+            let drawInteraction;
 
- 
- 
-     }
+            const snapInteraction = new Snap({
+              source: baseVector.getSource(),
+            });
+
+            const typeSelect = document.getElementById('type');
+
+            function addInteraction() {
+              const value = typeSelect.value;
+              if (value !== 'None') {
+                drawInteraction = new Draw({
+                  type: value,
+                  source: drawVector.getSource(),
+                  trace: true,
+                  traceSource: baseVector.getSource(),
+                  style: {
+                    'stroke-color': 'rgba(255, 255, 100, 0.5)',
+                    'stroke-width': 3,
+                    'fill-color': 'rgba(255, 255, 100, 0.25)',
+                    'circle-radius': 6,
+                    'circle-fill-color': 'rgba(255, 255, 100, 0.5)',
+                  },
+                });
+                map.addInteraction(drawInteraction);
+                map.addInteraction(snapInteraction);
+              }
+            }
+
+            typeSelect.onchange = function () {
+              map.removeInteraction(drawInteraction);
+              map.removeInteraction(snapInteraction);
+              addInteraction();
+            };
+            addInteraction();
+                }
 
                     
                     
